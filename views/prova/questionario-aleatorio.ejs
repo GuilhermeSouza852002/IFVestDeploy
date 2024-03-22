@@ -20,7 +20,7 @@
             <h1>Selecione um simulado</h1>
 
             <form action="/usuario/FazerProva/<%= prova.id %>" method="POST">
-                <%- include('colapsa-Simulado.ejs') %>
+                <%- include('../partials/colapsa-Simulado') %>
                 
                 <input type="hidden" name="provaId" id="provaId">
                 <input type="hidden" name="perguntaId" id="perguntaId">

@@ -13,7 +13,7 @@
         <title>Responsive sidebar submenus</title>
     </head>
     <body>
-        <%- include('sidebar.ejs') %>
+        <%- include('../partials/sidebar') %>
         <!--========== CONTENTS ==========-->
         <main>
             
@@ -25,7 +25,7 @@
             </form>
 
             <form action="/usuario/FazerProva/<%= prova.id %>" method="POST">
-                <%- include('colapsa-Simulado2.ejs') %>
+                <%- include('../partials/colapsa-Simulado2') %>
                 
                 <input type="hidden" name="provaId" id="provaId">
                 <input type="hidden" name="perguntaId" id="perguntaId">

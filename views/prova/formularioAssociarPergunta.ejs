@@ -13,14 +13,14 @@
         <title>Responsive sidebar submenus</title>
     </head>
     <body>
-        <%- include('sidebar.ejs') %>
+        <%- include('../partials/sidebar') %>
         <!--========== CONTENTS ==========-->
         <main>
             
             <h1>Associar Questões a Simulado</h1>
 
             <form action="/usuario/Simulados/<%= prova.id %>/adicionar-questao" method="POST">
-                <%- include('colapsar.ejs') %>
+                <%- include('../partials/colapsar') %>
                 <input type="hidden" name="perguntaId" id="perguntaId">
                 <button type="submit">Associar</button>
             </form>
