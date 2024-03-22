@@ -11,7 +11,7 @@ const roteador = Router()
 
 var usuario3 = 1;
 
-roteador.get('/inicio', (req, res)=>{
+roteador.get('/', (req, res)=>{
     res.status(200).render('usuario/inicio');
 });
 

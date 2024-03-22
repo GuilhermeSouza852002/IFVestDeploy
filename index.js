@@ -22,7 +22,7 @@ const secure_pass = (req, res, next)=>{
     req.path === '/login'){
         next();
     }else{
-        res.redirect('/inicio/inicio');
+        res.redirect('/home');
     }
 }
 
@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // de POST para PATCH ou DELETE
 app.use(methodOverride('_method'));
 
-app.use('/inicio', inicio);
+app.use('/home', inicio);
 app.use(secure_pass);
 app.use('/usuario', usuarios); // usuario, usuarios(lista com os usuarios)
 // app.use('/comentario', comentarios); //comentarios do usuario

@@ -5,7 +5,7 @@ const roteador = Router()
 
 //Cadastro rotas relacionadas ao cadastro de usuario
 
-roteador.get('/inicio', (req, res) => {
+roteador.get('/', (req, res) => {
     res.status(200).render('usuario/inicio');
 });
 
