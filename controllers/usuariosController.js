@@ -225,7 +225,7 @@ roteador.post('/registrar-questaoX', async (req, res) => {
 
 roteador.get('/criar-questionario', async (req, res) => {
   const areas = await Area.findAll();
-    res.render('criar-prova', {areas, usuario3}); 
+    res.render('prova/criar-prova', {areas, usuario3}); 
   });
 
 // Rota para lidar com o envio do formulário
@@ -255,7 +255,7 @@ roteador.get('/Simulados', async (req, res) => {
     try {
       const provas = await Simulados.findAll(); // Supondo que você tenha um modelo "Provas"
   
-      res.render('lista-provas', { provas, usuario3 });
+      res.render('prova/lista-provas', { provas, usuario3 });
     } catch (error) {
       console.error(error);
       res.status(500).send('Ocorreu um erro ao recuperar os questionários.');
@@ -272,7 +272,7 @@ roteador.get('/Simulados/:provaId/adicionar-questoes', async (req, res) => {
       const areas = await Area.findAll();
 
   
-      res.render('formularioAssociarPergunta', { prova, perguntas, topicos, areas, prova, usuario3});
+      res.render('prova/formularioAssociarPergunta', { prova, perguntas, topicos, areas, prova, usuario3});
     } catch (error) {
       console.error(error);
       res.status(500).send('Erro ao carregar formulário de associação de pergunta');
@@ -328,7 +328,7 @@ roteador.get('/Simulados/:provaId/adicionar-questoes', async (req, res) => {
 
       const prova = await Simulados.findByPk(provaId);
 
-      res.render('prova', { perguntas, prova, usuario3 });
+      res.render('prova/prova', { perguntas, prova, usuario3 });
     } catch (error) {
       console.error('Erro ao buscar perguntas da prova:', error);
       res.status(500).send('Erro ao buscar perguntas da prova.');
@@ -354,7 +354,7 @@ roteador.get('/Simulados/:provaId/adicionar-questoes', async (req, res) => {
 
       const prova = await Simulados.findByPk(provaId);
 
-      res.render('provaTempo', { perguntas, prova, usuario3 });
+      res.render('prova/provaTempo', { perguntas, prova, usuario3 });
     } catch (error) {
       console.error('Erro ao buscar perguntas da prova:', error);
       res.status(500).send('Erro ao buscar perguntas da prova.');
@@ -382,7 +382,7 @@ roteador.get('/Simulados/:provaId/adicionar-questoes', async (req, res) => {
 
       const prova = await Simulados.findByPk(provaId);
 
-      res.render('provaX', { perguntas, prova, usuario3 });
+      res.render('prova/provaX', { perguntas, prova, usuario3 });
     } catch (error) {
       console.error('Erro ao buscar perguntas da prova:', error);
       res.status(500).send('Erro ao buscar perguntas da prova.');
@@ -409,7 +409,7 @@ roteador.get('/Simulados/:provaId/adicionar-questoes', async (req, res) => {
 
       const prova = await Simulados.findByPk(provaId);
 
-      res.render('provaXtempo', { perguntas, prova, usuario3 });
+      res.render('prova/provaXtempo', { perguntas, prova, usuario3 });
     } catch (error) {
       console.error('Erro ao buscar perguntas da prova:', error);
       res.status(500).send('Erro ao buscar perguntas da prova.');
@@ -456,7 +456,7 @@ roteador.get('/Simulados/:provaId/adicionar-questoes', async (req, res) => {
   });
   
   roteador.get('/video', (req, res)=>{
-    res.status(200).render('video', {usuario3});
+    res.status(200).render('conteudo/video', {usuario3});
 });
 
 roteador.get('/seleciona-simulado', async (req, res) => {
@@ -464,7 +464,7 @@ roteador.get('/seleciona-simulado', async (req, res) => {
     const topicos = await Topico.findAll();
     const areas = await Area.findAll();
 
-    res.render('seleciona-simulado', { topicos, prova,areas, usuario3 });
+    res.render('simulado/seleciona-simulado', { topicos, prova,areas, usuario3 });
   }
 );
 
@@ -473,7 +473,7 @@ roteador.get('/seleciona-simulado-objetiva', async (req, res) => {
   const topicos = await Topico.findAll();
   const areas = await Area.findAll();
 
-  res.render('seleciona-simulado2', { topicos, prova,areas, usuario3 });
+  res.render('simulado/seleciona-simulado2', { topicos, prova,areas, usuario3 });
 }
 );
 
@@ -490,7 +490,7 @@ roteador.post('/search', async (req, res) => {
       return simulado.titulo.toLowerCase().includes(searchTerm) || formattedDate.includes(searchTerm);
     });
 
-    res.render('pesquisa', { simulados: results, searchTerm, usuario3 });
+    res.render('simulado/pesquisa', { simulados: results, searchTerm, usuario3 });
   } catch (error) {
     console.error('Erro ao buscar simulados:', error);
     res.status(500).send('Erro ao buscar simulados.');
@@ -510,7 +510,7 @@ roteador.get('/seleciona-topico-aleatorio', async (req, res) => {
   const topicos = await Topico.findAll();
   const areas = await Area.findAll();
 
-  res.render('seleciona-topico-aleatorio', { topicos, areas, usuario3 });
+  res.render('simulado/seleciona-topico-aleatorio', { topicos, areas, usuario3 });
 }
 );
 
@@ -574,7 +574,7 @@ roteador.get('/responder-prova-aleatoria/:provaId', async (req, res) => {
 
     const prova = await Simulados.findByPk(provaId);
 
-    res.render('questionarioAleatorio', { perguntas, prova, usuario3 });
+    res.render('prova/questionarioAleatorio', { perguntas, prova, usuario3 });
   } catch (error) {
     console.error('Erro ao buscar perguntas da prova:', error);
     res.status(500).send('Erro ao buscar perguntas da prova.');

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--========== BOX ICONS ==========-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="/css/styles.css">
+
+        <title>Responsive sidebar submenus</title>
+    </head>
+    <body>
+        <%- include('sidebar.ejs') %>
+        <main>
+            <div class="container">
+        </div>
+                <h1>Registrar Nova Questão</h1>
+                <form action="/usuario/registrar-questaoX" method="POST">
+
+                    <label for="titulo">titulo:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+                    
+                    <link rel="stylesheet" href="/css/icons.css">
+                <link rel="stylesheet" href="/css/editor.css">
+                
+                <input type="file" id="upload" hidden/>
+
+        <div id="parentEditor">
+            <div id="painelEditor">
+                <button class="btnColor" onclick="applyCommand('justifyLeft')" type="button"><i class="demo-icon icon-align-left"></i></button>
+                <button class="btnColor" onclick="applyCommand('justifyCenter')" type="button"><i class="demo-icon icon-align-center"></i></button>
+                <button class="btnColor" onclick="applyCommand('justifyRight')" type="button"><i class="demo-icon icon-align-right"></i></button>
+                <button class="btnColor" onclick="applyCommand('justifyFull')" type="button"><i class="demo-icon icon-align-justify"></i></button>
+
+                <button class="btnColor" onclick="applyCommand('bold')" type="button"><i class="demo-icon icon-bold"></i></button>
+                <button class="btnColor" onclick="applyCommand('italic')" type="button"><i class="demo-icon icon-italic"></i></button>
+                <button class="btnColor" onclick="applyCommand('strikeThrough')" type="button"><i class="demo-icon icon-strike"></i></button>
+                <button class="btnColor" onclick="applyCommand('underline')" type="button"><i class="demo-icon icon-underline"></i></button>
+
+                <button class="btnColor" onclick="applyCommand('outdent')" type="button"><i class="demo-icon icon-indent-left"></i></button>
+                <button class="btnColor" onclick="applyCommand('indent')" type="button"><i class="demo-icon icon-indent-right"></i></button>
+                
+                <button class="btnColor" onclick="link()"><i class="demo-icon icon-link"  ></i></button>
+                <button class="btnColor" onclick="applyCommand('redo')" type="button"><i class="demo-icon icon-ccw" ></i></button>
+                <button class="btnColor" onclick="applyCommand('undo')" type="button"><i class="demo-icon icon-cw"  ></i></button>
+                <label for="upload"><i class="demo-icon icon-picture" type="button"></i></label>
+ 
+                <i class="demo-icon icon-table"></i>
+
+                <button id="fontColor" class="btnColor" type="button">F</button>
+				<button id="backColor" class="btnColor" type="button">B</button>
+				<button id="paleta" class="jscolor {valueElement:null, value:'3c8dbc'}" type="button"></button>
+
+                <select type="text" id="inputFontSize" onchange="alterFont(this.value)" >
+                    <option value="2">10 pt</option>
+                    <option value="3">12 pt</option>
+                    <option value="4">14 pt</option>
+                    <option value="6">16 pt</option>
+                    <option value="7">18 pt</option>
+                </select>
+            </div>
+
+            <div id="editor" contenteditable="true">
+				<p id="Teste">Olá, mundo!!</p>
+            </div>
+            
+            <div id="respostas-container">
+            <div><input type="input" name="respostas[]" placeholder="Sua resposta"><button type="button" onclick="removeResposta(this)">Remover resposta</button></div>
+            </div>
+            <button type="button" onclick="addResposta()">Adicionar resposta</button>
+
+            <input type="hidden" id="pergunta" name="pergunta">
+            <script src="/js/jscolor.min.js"></script>
+            <script src="/js/editor.js"></script>                    
+
+                    <label for="topicoId">Selecione um topico:</label>
+                    <select name="topicoId" id="topicoId">
+                        <% Topicos.forEach(topico => { %>
+                            <option value="<%= topico.id %>"><%= topico.materia %></option>
+                        <% }); %>
+                    </select>
+                    
+                </form>
+                <button type="submit">Registrar</button>
+            </div>
+        </main>
+
+        <!--========== MAIN JS ==========-->
+        <script src="/js/main.js"></script>
+    </body>
+</html>
+
+
