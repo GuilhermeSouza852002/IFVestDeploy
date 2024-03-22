@@ -3,16 +3,18 @@ const { Usuario } = require('../models');
 
 const roteador = Router()
 
+//Cadastro rotas relacionadas ao cadastro de usuario
+
 roteador.get('/inicio', (req, res) => {
-    res.status(200).render('inicio');
+    res.status(200).render('usuario/inicio');
 });
 
 roteador.get('/login', (req, res) => {
-    res.status(200).render('login');
+    res.status(200).render('usuario/login');
 });
 
 roteador.get('/cadastro', (req, res) => {
-    res.status(200).render('cadastro');
+    res.status(200).render('usuario/cadastro');
 });
 
 roteador.get('/logoff', (req, res) => {

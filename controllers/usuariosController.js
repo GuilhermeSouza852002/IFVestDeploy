@@ -78,7 +78,7 @@ roteador.get('/perfil', async (req, res) => {
       res.status(200).redirect('/usuario/login');
     }else{
       usuario3 = usuario.perfil;
-    res.status(200).render('inicioLogado', {usuario3});
+    res.status(200).render('usuario/inicioLogado', {usuario3});
     }
     
 });

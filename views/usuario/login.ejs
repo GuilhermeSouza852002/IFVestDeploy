@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/index.css'>
+</head>
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <h1>Faça login<br>E começe a aprender</h1>
+            <img src="/img/gif.svg" class="left-login-image" alt="GifAnimado">
+        </div>
+        <form action="/inicio/login" method="post">
+            <div class="right-login">
+                <div class="card-login">
+                    <h1>LOGIN</h1>
+                    <div class="textfield">
+                        <label for="usuario">Usuário</label>
+                        <input type="text" name="usuario" placeholder="Usuário">
+                    </div>
+                    <div class="textfield">
+                        <label for="senha">Senha</label>
+                        <input type="password" name="senha" placeholder="Senha">
+                    </div>
+                    <button class="btn-login">Login</button>
+                    <a href="/inicio/cadastro" class="Cadastro-Login">Não possui login? clique aqui</a>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</body>
+</html>
