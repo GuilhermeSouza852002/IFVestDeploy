@@ -12,15 +12,15 @@ const roteador = Router()
 var usuario3 = 1;
 
 roteador.get('/inicio', (req, res)=>{
-    res.status(200).render('inicio');
+    res.status(200).render('usuario/inicio');
 });
 
 roteador.get('/login', (req, res)=>{
-    res.status(200).render('login');
+    res.status(200).render('usuario/login');
 });
 
 roteador.get('/cadastro', (req, res)=>{
-    res.status(200).render('cadastro');
+    res.status(200).render('usuario/cadastro');
 });
 
 roteador.get('/logoff', (req, res)=>{
@@ -61,11 +61,11 @@ roteador.get('/perfil', async (req, res) => {
     if (usuario == null) {
       res.status(200).redirect('/usuario/login');
     } else if (usuario.perfil == 2) {
-      res.status(200).render('perfilProf', { usuario, id, usuario3 });
+      res.status(200).render('usuario/perfilProf', { usuario, id, usuario3 });
     } else if (usuario.perfil == 3) {
-      res.status(200).render('perfilAdm', { usuario, id, usuario3 });
+      res.status(200).render('usuario/perfilAdm', { usuario, id, usuario3 });
     } else {
-      res.status(200).render('perfil', { usuario, id, favorito, usuario3 });
+      res.status(200).render('usuario/perfil', { usuario, id, favorito, usuario3 });
     }
   });
   
@@ -91,7 +91,7 @@ roteador.get('/perfilProf', async (req, res)=>{
     if (usuario == null) {
         res.status(200).redirect('/usuario/login');
     }else{
-        res.status(200).render('perfilProf', {usuario, id, usuario3});
+        res.status(200).render('usuario/perfilProf', {usuario, id, usuario3});
     }
 });
 
@@ -103,16 +103,18 @@ roteador.get('/perfilAdm', async (req, res)=>{
     if (usuario == null) {
         res.status(200).redirect('/usuario/login');
     }else{
-        res.status(200).render('perfiladm', {usuario, id, usuario3});
+        res.status(200).render('usuario/perfilAdm', {usuario, id, usuario3});
     }
 });
 
+//só existe aqui
 roteador.get('/perfil/MudarSenha', async (req, res)=>{
     const id2 = req.session.idUsuario;
 
     let senha = await Usuario.findByPk(id2);
     res.status(200).render('editSenha', {senha, id2, usuario3});
 });
+//
 
 roteador.post('/', async (req, res)=>{
     const {nome, usuario, senha, email, email_secundario} = req.body;
@@ -120,6 +122,7 @@ roteador.post('/', async (req, res)=>{
     res.status(201).redirect('/usuario/login');
 });
 
+//??????????????????????????????????
 roteador.patch('/:id', async (req, res)=>{
     let {senha} = req.body;
     await Usuario.update({senha},
@@ -129,7 +132,7 @@ roteador.patch('/:id', async (req, res)=>{
     );
     res.status(200).redirect('/coxinharia');
 });
-  
+//
   
 
 roteador.delete('/:id', async (req, res)=>{
@@ -155,6 +158,7 @@ roteador.delete('/:id', async (req, res)=>{
     
 });
 
+//Só existe aqui
 roteador.get('/registrar-questao', async (req, res) => {
     if (!req.session.login) {
         return res.status(401).redirect('/usuario/login');
@@ -170,6 +174,7 @@ roteador.get('/registrar-questaoX', async (req, res) => {
   const Topicos = await Topico.findAll();
   res.status(200).render('registroPerguntaX', { Topicos, usuario3 });
 });
+//
 
 roteador.post('/registrar-questao', async (req, res) => {
     try {
