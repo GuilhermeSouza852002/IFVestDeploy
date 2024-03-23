@@ -61,10 +61,10 @@ roteador.post('/', async (req, res) => {
         
         await Usuario.create({ nome, usuario, senha, email, email_secundario });
 
-        res.status(201).redirect('/inicio/login');
+        res.status(201).redirect('/home/login');
     }catch(err){
         console.error(err)
-        res.status(201).redirect('/inicio/cadastro');
+        res.status(201).redirect('/home/cadastro');
     }
 
 });
