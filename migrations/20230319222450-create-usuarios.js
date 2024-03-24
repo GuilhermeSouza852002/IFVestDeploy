@@ -1,5 +1,7 @@
 'use strict';
 
+const { ENUM } = require('sequelize');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -35,8 +37,11 @@ module.exports = {
         allowNull: true
       },
       perfil: {
-        type: Sequelize.INTEGER,
-        allowNull: true
+        type: Sequelize.ENUM({
+          values: ['USUARIO', 'PROFESSOR', 'ADMIN']
+        }),
+        allowNull: true,
+        defaultValue: 'USUARIO'
       },
       createdAt:{
         type: Sequelize.DATE,

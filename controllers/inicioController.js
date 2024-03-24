@@ -5,22 +5,31 @@ const roteador = Router()
 
 //Cadastro rotas relacionadas ao cadastro de usuario
 
-roteador.get('/', (req, res) => {
+roteador.get('/home', (req, res) => {
     res.status(200).render('usuario/inicio');
 });
 
 roteador.get('/login', (req, res) => {
-    res.status(200).render('usuario/login');
+    let errorMessage = req.session.errorMessage;
+    console.log(errorMessage);
+    if(errorMessage === null){
+        errorMessage = " ";
+    }
+    req.session.errorMessage = null; // Limpa a mensagem de erro após exibi-la
+    res.status(200).render('usuario/login', { errorMessage });
 });
 
 roteador.get('/cadastro', (req, res) => {
     res.status(200).render('usuario/cadastro');
 });
 
-roteador.get('/logoff', (req, res) => {
+roteador.post('/logoff', (req, res) => {
+    console.log("....deslogando")
     req.session.destroy();
     res.redirect('/usuario/login');
 });
+
+// ... outras rotas e código ...
 
 roteador.post('/login', async (req, res) => {
     const { usuario, senha } = req.body;
@@ -41,15 +50,23 @@ roteador.post('/login', async (req, res) => {
         if (resposta) {
             req.session.login = true;
             req.session.idUsuario = resposta.id;
+            req.session.perfil = resposta.perfil;
             res.redirect('/usuario/inicioLogado');
+        } else {
+            req.session.errorMessage = "USUÁRIO OU SENHA INCORRETOS !!!!";
+            res.redirect('/login');
         }
     } catch (err) {
+
         console.error(err)
-        res.redirect('/usuario/login');
+        req.session.errorMessage = "Ocorreu um erro ao tentar fazer login.";
+        res.redirect('/login');
     }
 });
 
-roteador.post('/', async (req, res) => {
+// ... outras rotas e código ...
+
+roteador.post('/cadastro', async (req, res) => {
     const { nome, usuario, senha, email, email_secundario } = req.body;
     try{
         if( !nome || !usuario || !senha || !email){
@@ -61,10 +78,10 @@ roteador.post('/', async (req, res) => {
         
         await Usuario.create({ nome, usuario, senha, email, email_secundario });
 
-        res.status(201).redirect('/home/login');
+        res.status(201).redirect('/login');
     }catch(err){
         console.error(err)
-        res.status(201).redirect('/home/cadastro');
+        res.status(201).redirect('/cadastro');
     }
 
 });

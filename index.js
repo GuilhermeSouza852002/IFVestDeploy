@@ -42,7 +42,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 // de POST para PATCH ou DELETE
 app.use(methodOverride('_method'));
 
-app.use('/home', inicio);
+app.use(async (req, res, next) => {
+    if (req.session.perfil) {
+
+         res.locals.perfilUsuario = req.session.perfil;
+
+    } else {
+       console.log('ID de usuário não está definido na sessão');
+    }
+    next();
+});
+
+app.use('/', inicio);
 app.use(secure_pass);
 app.use('/usuario', usuarios); // usuario, usuarios(lista com os usuarios)
 // app.use('/comentario', comentarios); //comentarios do usuario

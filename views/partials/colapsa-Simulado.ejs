@@ -1,51 +1,53 @@
-<link rel='stylesheet' href='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'><link rel="stylesheet" href="/css/colapsar.css">
+<link rel='stylesheet' href='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+<link rel="stylesheet" href="/css/colapsar.css">
 <ul class="left-menu theme1">
-    <style>
-        .tooltip {
-          position: relative;
-          display: inline-block;
-          border-bottom: 1px dotted black;
-        }
-        
-        .tooltip .tooltiptext {
-          visibility: hidden;
-          width: 120px;
-          background-color: black;
-          color: #fff;
-          text-align: center;
-          border-radius: 6px;
-          padding: 5px 0;
-        
-          /* Position the tooltip */
-          position: absolute;
-          z-index: 1;
-        }
-        
-        .tooltip:hover .tooltiptext {
-          visibility: visible;
-        }
-        </style>
-        
-    <% areas.forEach(area => {%>
-      <li><a><%= area.area %></a>
-        <ul>
-          <% prova.forEach(prova => { 
-            if (area.id == prova.areaId && prova.tipo == 2) { %>
-              <li>
-                <a href="#" onclick="ExibirForm('<%= prova.id %>', '<%= prova.titulo %>' , '<%= prova.descricao %>')">
-                  <%= prova.titulo %>
-                  </a>
-              </li>
+  <style>
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted black;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+  </style>
+
+  <% areas.forEach(area=> {%>
+    <li><a>
+        <%= area.area %>
+      </a>
+      <ul>
+        <% prova.forEach(prova=> {
+          if (area.id == prova.areaId && prova.tipo == 2) { %>
+          <li>
+            <a href="#" onclick="ExibirForm('<%= prova.id %>', '<%= prova.titulo %>' , '<%= prova.descricao %>')">
+              <%= prova.titulo %>
+            </a>
+          </li>
           <% } }); %>
-        </ul>
-      </li>
+      </ul>
+    </li>
     <% }); %>
-  </ul>
+</ul>
 
 
-              
+
 <!-- partial -->
-  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script><script  src="/js/colapsar.js"></script>
-
-
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script src="/js/colapsar.js"></script>
