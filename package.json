@@ -15,6 +15,7 @@
     "express-session": "^1.17.3",
     "method-override": "^3.0.0",
     "mysql2": "^3.2.0",
+    "openai": "^4.29.2",
     "pg": "^8.11.3",
     "sequelize": "^6.31.1"
   },
