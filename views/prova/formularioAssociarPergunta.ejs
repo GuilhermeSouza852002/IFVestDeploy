@@ -1,32 +1,34 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-        <!--========== BOX ICONS ==========-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--========== CSS ==========-->
-        <link rel="stylesheet" href="/css/styles.css">
+    <!--========== BOX ICONS ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-        <title>Responsive sidebar submenus</title>
-    </head>
-    <body>
-        <%- include('../partials/sidebar') %>
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <title>Responsive sidebar submenus</title>
+</head>
+
+<body>
+    <%- include('../partials/sidebar') %>
         <!--========== CONTENTS ==========-->
         <main>
-            
+
             <h1>Associar Questões a Simulado</h1>
 
             <form action="/usuario/Simulados/<%= prova.id %>/adicionar-questao" method="POST">
                 <%- include('../partials/colapsar') %>
-                <input type="hidden" name="perguntaId" id="perguntaId">
-                <button type="submit">Associar</button>
+                    <input type="hidden" name="perguntaId" id="perguntaId">
+                    <button type="submit">Associar</button>
             </form>
-            
+
             <script>
-                
+
                 function ExibirForm(perguntaId, perguntaTitulo, perguntaPergunta) {
                     // Atualizar o conteúdo do modal com as informações da pergunta
                     const modal = document.getElementById('myModal');
@@ -44,30 +46,30 @@
                 function submitForm() {
                     document.querySelector('form').submit();
                 }
-                </script>
+            </script>
 
-                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-                <div class="w3-container">             
-                    <!-- Modal -->
-                    <div id="myModal" class="w3-modal">
-                        <div class="w3-modal-content">
-                            <div class="w3-container">
-                                <span onclick="document.getElementById('myModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                                <h3 class="modal-title"></h3>
-                                <p class="modal-body"></p>
-                                <button onclick="submitForm()">Adicionar</button>
-                            </div>
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <div class="w3-container">
+                <!-- Modal -->
+                <div id="myModal" class="w3-modal">
+                    <div class="w3-modal-content">
+                        <div class="w3-container">
+                            <span onclick="document.getElementById('myModal').style.display='none'"
+                                class="w3-button w3-display-topright">&times;</span>
+                            <h3 class="modal-title"></h3>
+                            <p class="modal-body"></p>
+                            <button onclick="submitForm()">Adicionar</button>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
+            </div>
             </div>
 
-    <a href="/usuarios/Simulados/<%= prova.id %>">Voltar para a simulado</a>
-    <link rel="stylesheet" href="/css/styles.css">
+            <a href="/usuarios/Simulados/<%= prova.id %>">Voltar para a simulado</a>
+            <link rel="stylesheet" href="/css/styles.css">
         </main>
 
         <!--========== MAIN JS ==========-->
         <script src="/js/main.js"></script>
-    </body>
-</html>
+        <%- include('../partials/footer') %>

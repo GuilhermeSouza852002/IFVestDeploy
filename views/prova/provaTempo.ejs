@@ -2,58 +2,66 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Questões do Simulado</title>
+    <meta charset="UTF-8">
+    <title>Questões do Simulado</title>
 </head>
+
 <body>
-  
+
 </body>
+
 </html>
 
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-        <!--========== BOX ICONS ==========-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--========== CSS ==========-->
-        <link rel="stylesheet" href="/css/styles.css">
-        <link rel="stylesheet" href="/css/googlef2.css">
+    <!--========== BOX ICONS ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-        <title>Responsive sidebar submenus</title>
-    </head>
-    <body>
-        <%- include('../partials/sidebar') %>
-            <main>
-                <form id="questionario" class="form" action="/usuario/responder-prova/<%= prova.id %>" method="POST">
-                    <div class="title-div">
-                        <h1>Teste google titulo</h1>
-                        <h4>Redirecionamento em <span id="cronometro">0:00</span></h4>
-                        <p>Teste Descrição.<br></p>
-                    </div>
-                    
-                    <% for (let i = 0; i < perguntas.length; i++) { %>
-                        <div class="name-div">
-                        <div class="titulo"><p><%= perguntas[i].titulo %></p></div>
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/googlef2.css">
+
+    <title>Responsive sidebar submenus</title>
+</head>
+
+<body>
+    <%- include('../partials/sidebar') %>
+        <main>
+            <form id="questionario" class="form" action="/usuario/responder-prova/<%= prova.id %>" method="POST">
+                <div class="title-div">
+                    <h1>Teste google titulo</h1>
+                    <h4>Redirecionamento em <span id="cronometro">0:00</span></h4>
+                    <p>Teste Descrição.<br></p>
+                </div>
+
+                <% for (let i=0; i < perguntas.length; i++) { %>
+                    <div class="name-div">
+                        <div class="titulo">
+                            <p>
+                                <%= perguntas[i].titulo %>
+                            </p>
+                        </div>
                         <div class="name"><%- perguntas[i].pergunta %><span class="required">*</span></div>
                         <div class="input-div"><input type="input" name="respostas[]" placeholder="Sua resposta"></div>
+                    </div>
+                    <% } %>
+                        <div class="espaco">
+                            <button class="btn" type="submit">Enviar</button>
                         </div>
-                      <% } %>
-                      <div class="espaco">
-                        <button class="btn" type="submit">Enviar</button>
-                      </div>
-                      
-                </form>
-                </div>
-                
-            </main>
+
+            </form>
+            </div>
+
+        </main>
 
         <!--========== MAIN JS ==========-->
         <script src="/js/main.js"></script>
         <script src="/js/prova.js"></script>
-    </body>
-</html>
+        <%- include('../partials/footer') %>

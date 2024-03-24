@@ -1,56 +1,58 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-        <!--========== BOX ICONS ==========-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--========== CSS ==========-->
-        <link rel="stylesheet" href="/css/styles.css">
+    <!--========== BOX ICONS ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-        <title>Responsive sidebar submenus</title>
-    </head>
-    <body>
-        <%- include('../partials/sidebar') %>
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <title>Responsive sidebar submenus</title>
+</head>
+
+<body>
+    <%- include('../partials/sidebar') %>
         <main>
             <h1>Criar Simulados</h1>
 
-    <form action="/usuario/criar-prova" method="POST">
-    <label for="titulo">Título do Simulados:</label>
-    <input type="text" id="titulo" name="titulo" required>
-    
-    <label for="descricao">Descricao:</label>
-    <input type="text" id="descricao" name="descricao" required>
+            <form action="/usuario/criar-prova" method="POST">
+                <label for="titulo">Título do Simulados:</label>
+                <input type="text" id="titulo" name="titulo" required>
 
-    <label for="areaId">Selecione uma area:</label>
-                    <select name="areaId" id="areaId">
-                        <% areas.forEach(area => { %>
-                            <option value="<%= area.id %>"><%= area.area %></option>
+                <label for="descricao">Descricao:</label>
+                <input type="text" id="descricao" name="descricao" required>
+
+                <label for="areaId">Selecione uma area:</label>
+                <select name="areaId" id="areaId">
+                    <% areas.forEach(area=> { %>
+                        <option value="<%= area.id %>">
+                            <%= area.area %>
+                        </option>
                         <% }); %>
-                    </select>
+                </select>
 
-                    <label for="tipo">Selecione o tipo:</label>
-                    <select name="tipo" id="tipo">
-                      <option value="1">Dissertativa</option>
-                      <option value="2">Objetiva</option>
-                      <option value="3">Aleatoria</option>
-                    </select><br>
+                <label for="tipo">Selecione o tipo:</label>
+                <select name="tipo" id="tipo">
+                    <option value="1">Dissertativa</option>
+                    <option value="2">Objetiva</option>
+                    <option value="3">Aleatoria</option>
+                </select><br>
 
-                    <label for="modo">Selecione o Modo:</label>
-                    <select name="modo" id="modo">
-                      <option value="1">Normal</option>
-                      <option value="2">Aleatorio</option>
-                    </select><br>
+                <label for="modo">Selecione o Modo:</label>
+                <select name="modo" id="modo">
+                    <option value="1">Normal</option>
+                    <option value="2">Aleatorio</option>
+                </select><br>
 
-    <button type="submit">Criar Simulado</button>
-    </form>
+                <button type="submit">Criar Simulado</button>
+            </form>
 
         </main>
 
         <!--========== MAIN JS ==========-->
         <script src="/js/main.js"></script>
-    </body>
-</html>
-
+        <%- include('../partials/footer') %>

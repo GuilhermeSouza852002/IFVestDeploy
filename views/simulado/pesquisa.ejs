@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-        <!--========== BOX ICONS ==========-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--========== CSS ==========-->
-        <link rel="stylesheet" href="/css/styles.css">
+    <!--========== BOX ICONS ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-        <title>Responsive sidebar submenus</title>
-    </head>
-    <body>
-        <%- include('../partials/sidebar') %>
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <title>Responsive sidebar submenus</title>
+</head>
+
+<body>
+    <%- include('../partials/sidebar') %>
         <!--========== CONTENTS ==========-->
         <main>
-            
+
             <h1>Simulados</h1>
 
             <form action="/usuario/search" method="post">
@@ -28,37 +30,41 @@
             <h2>Resultados</h2>
 
             <ul>
-                <% simulados.forEach(simulado => { %>
-                    <% if (simulado.tipo === 1) { %>
-                        <li><%= simulado.titulo %> - <%= simulado.createdAt %> - alternativa </li>
+                <% simulados.forEach(simulado=> { %>
+                    <% if (simulado.tipo===1) { %>
+                        <li>
+                            <%= simulado.titulo %> - <%= simulado.createdAt %> - alternativa
+                        </li>
                         <a href="/usuario/FazerProvaX/<%= simulado.id %>">
                             <button>Normal</button>
                         </a>
                         <a href="/usuario/FazerProvaXtempo/<%= simulado.id %>">
                             <button>Com tempo</button>
                         </a>
-                          
-                    <% } else { %>
-                        <li><%= simulado.titulo %> - <%= simulado.createdAt %> - dissertativa </li>
-                        <a href="/usuario/FazerProva/<%= simulado.id %>">
-                            <button>Normal</button>
-                        </a>
-                        <a href="/usuario/FazerProvatempo/<%= simulado.id %>">
-                            <button>Com tempo</button> 
-                        </a>
-                         
-                    <% } %>
-                    <%= console.log(simulado) %>
-                  <% }); %>
-                  
+
+                        <% } else { %>
+                            <li>
+                                <%= simulado.titulo %> - <%= simulado.createdAt %> - dissertativa
+                            </li>
+                            <a href="/usuario/FazerProva/<%= simulado.id %>">
+                                <button>Normal</button>
+                            </a>
+                            <a href="/usuario/FazerProvatempo/<%= simulado.id %>">
+                                <button>Com tempo</button>
+                            </a>
+
+                            <% } %>
+                                <%= console.log(simulado) %>
+                                    <% }); %>
+
             </ul>
 
             <% if (searchTerm) { %>
-                <p>Resultados para: <%= searchTerm %></p>
-            <% } %>
+                <p>Resultados para: <%= searchTerm %>
+                </p>
+                <% } %>
         </main>
 
         <!--========== MAIN JS ==========-->
         <script src="/js/main.js"></script>
-    </body>
-</html>
+        <%- include('../partials/footer') %>

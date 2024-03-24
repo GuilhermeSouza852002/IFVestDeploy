@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-        <!--========== BOX ICONS ==========-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--========== CSS ==========-->
-        <link rel="stylesheet" href="/css/styles.css">
+    <!--========== BOX ICONS ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-        <title>Responsive sidebar submenus</title>
-    </head>
-    <body>
-        <%- include('../partials/sidebar') %>
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <title>Responsive sidebar submenus</title>
+</head>
+
+<body>
+    <%- include('../partials/sidebar') %>
         <!--========== CONTENTS ==========-->
         <main>
-            
+
             <h1>Selecione um simulado</h1>
             <form action="/usuario/search" method="post">
                 <label for="searchTerm">Buscar:</label>
@@ -25,21 +27,21 @@
             </form>
 
             <form action="/usuario/FazerProva/<%= prova.id %>" method="POST">
-                <%- include('../partials/colapsa-Simulado2') %>
-                
-                <input type="hidden" name="provaId" id="provaId">
-                <input type="hidden" name="perguntaId" id="perguntaId">
-                <button type="submit">Associar</button>
+                <%- include('../simulado/colapsa-Simulado2') %>
+
+                    <input type="hidden" name="provaId" id="provaId">
+                    <input type="hidden" name="perguntaId" id="perguntaId">
+                    <button type="submit">Associar</button>
             </form>
-            
+
             <script>
-                
+
                 function ExibirForm(provaId, perguntaId, perguntaTitulo, perguntaPergunta) {
                     // Atualizar o conteúdo do modal com as informações da pergunta
                     const modal = document.getElementById('myModal');
                     modal.querySelector('.modal-title').textContent = perguntaTitulo;
                     modal.querySelector('.modal-body').textContent = perguntaPergunta;
-                    
+
                     // Set the provaId value to the hidden input field
                     document.getElementById('provaId').value = provaId;
 
@@ -58,31 +60,31 @@
                     const provaId = document.getElementById('provaId').value;
                     window.location.href = "/usuario/FazerProvaXTempo/" + provaId;
                 }
-                </script>
+            </script>
 
-                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-                <div class="w3-container">             
-                    <!-- Modal -->
-                    <div id="myModal" class="w3-modal">
-                        <div class="w3-modal-content">
-                            <div class="w3-container">
-                                <span onclick="document.getElementById('myModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                                <h3 class="modal-title"></h3>
-                                <p class="modal-body"></p>
-                                <button onclick="submitForm()">Fazer</button>
-                                <button onclick="submitForm2()">Fazer com tempo</button>
-                            </div>
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <div class="w3-container">
+                <!-- Modal -->
+                <div id="myModal" class="w3-modal">
+                    <div class="w3-modal-content">
+                        <div class="w3-container">
+                            <span onclick="document.getElementById('myModal').style.display='none'"
+                                class="w3-button w3-display-topright">&times;</span>
+                            <h3 class="modal-title"></h3>
+                            <p class="modal-body"></p>
+                            <button onclick="submitForm()">Fazer</button>
+                            <button onclick="submitForm2()">Fazer com tempo</button>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
+            </div>
             </div>
 
-    <a href="/usuarios/Simulados/<%= prova.id %>">Voltar para a simulado</a>
-    <link rel="stylesheet" href="/css/styles.css">
+            <a href="/usuarios/Simulados/<%= prova.id %>">Voltar para a simulado</a>
+            <link rel="stylesheet" href="/css/styles.css">
         </main>
 
         <!--========== MAIN JS ==========-->
         <script src="/js/main.js"></script>
-    </body>
-</html>
+        <%- include('../partials/footer') %>

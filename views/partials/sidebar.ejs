@@ -3,7 +3,7 @@
     <div class="header__container">
         <img src="/img/perfil.jpg" alt="" class="header__img">
         <a href="" class="header__logo-name">nome</a>
-        
+
         <a href="#" class="header__logo">IFVest</a>
 
         <div class="header__search">
@@ -22,7 +22,7 @@
     <nav class="nav__container">
         <div>
             <a href="/usuario/iniciologado" class="nav__link nav__logo">
-                <i class='bx bxs-disc nav__icon' ></i>
+                <i class='bx bxs-disc nav__icon'></i>
                 <span class="nav__logo-name">IFSP</span>
             </a>
 
@@ -31,13 +31,13 @@
                     <h3 class="nav__subtitle">Perfil</h3>
 
                     <a href="/usuario/iniciologado" class="nav__link active">
-                        <i class='bx bx-home nav__icon' ></i>
+                        <i class='bx bx-home nav__icon'></i>
                         <span class="nav__name">Inicio</span>
                     </a>
-                    
+
                     <div class="nav__dropdown">
                         <a href="/usuario/perfil" class="nav__link">
-                            <i class='bx bx-user nav__icon' ></i>
+                            <i class='bx bx-user nav__icon'></i>
                             <span class="nav__name">Perfil</span>
                             <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                         </a>
@@ -52,7 +52,7 @@
                     </div>
 
                     <a href="#" class="nav__link">
-                        <i class='bx bx-message-rounded nav__icon' ></i>
+                        <i class='bx bx-message-rounded nav__icon'></i>
                         <span class="nav__name">Mensagens</span>
                     </a>
                 </div>
@@ -62,7 +62,7 @@
 
                     <div class="nav__dropdown">
                         <a href="#" class="nav__link">
-                            <i class='bx bx-bell nav__icon' ></i>
+                            <i class='bx bx-bell nav__icon'></i>
                             <span class="nav__name">Notificação</span>
                             <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                         </a>
@@ -79,17 +79,17 @@
                     </div>
 
                     <a href="#" class="nav__link">
-                        <i class='bx bx-compass nav__icon' ></i>
+                        <i class='bx bx-compass nav__icon'></i>
                         <span class="nav__name">Explore</span>
                     </a>
                     <a href="#" class="nav__link">
-                        <i class='bx bx-bookmark nav__icon' ></i>
+                        <i class='bx bx-bookmark nav__icon'></i>
                         <span class="nav__name">Saved</span>
                     </a>
 
                     <div class="nav__dropdown">
                         <a href="#" class="nav__link">
-                            <i class='bx bx-book-heart nav__icon' ></i>
+                            <i class='bx bx-book-heart nav__icon'></i>
                             <span class="nav__name">Materias</span>
                             <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                         </a>
@@ -106,34 +106,38 @@
 
                     <div class="nav__dropdown">
                         <a href="#" class="nav__link">
-                            <i class='bx bx-book-heart nav__icon' ></i>
+                            <i class='bx bx-book-heart nav__icon'></i>
                             <span class="nav__name">Simulados</span>
                             <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                         </a>
-                        
+
 
                         <div class="nav__dropdown-collapse">
                             <div class="nav__dropdown-content">
-                                <% if (perfilUsuario === "PROFESSOR") { %>
+                                <% if (perfilUsuario==="PROFESSOR" ) { %>
                                     <div class="nav__dropdown">
                                         <a href="#" class="nav__link">
                                             <span class="nav__name">Criar Questões</span>
                                             <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                                         </a>
-                
+
                                         <div class="nav__dropdown-collapse">
                                             <div class="nav__dropdown-content">
-                                                <a href="/usuario/registrar-questao/objetiva" class="nav__dropdown-item">Objetiva</a>
-                                                <a href="/usuario/registrar-questao/dissertativa" class="nav__dropdown-item">Disserta<br>tiva</a>
+                                                <a href="/usuario/registrar-questao/objetiva"
+                                                    class="nav__dropdown-item">Objetiva</a>
+                                                <a href="/usuario/registrar-questao/dissertativa"
+                                                    class="nav__dropdown-item">Disserta<br>tiva</a>
                                             </div>
                                         </div>
                                     </div>
-                                <% } %>
-                                <a href="/usuario/criar-questionario" class="nav__dropdown-item">Criar Simulado</a>
-                                <a href="/usuario/Simulados" class="nav__dropdown-item">Meus Simulados</a>
-                                <a href="/usuario/seleciona-simulado" class="nav__dropdown-item">Consultar simulados</a>
-                                
-                                
+                                    <% } %>
+                                        <a href="/usuario/criar-questionario" class="nav__dropdown-item">Criar
+                                            Simulado</a>
+                                        <a href="/usuario/Simulados" class="nav__dropdown-item">Meus Simulados</a>
+                                        <a href="/usuario/seleciona-simulado" class="nav__dropdown-item">Consultar
+                                            simulados</a>
+
+
                             </div>
                         </div>
 

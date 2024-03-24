@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-        <!--========== BOX ICONS ==========-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--========== CSS ==========-->
-        <link rel="stylesheet" href="/css/styles.css">
+    <!--========== BOX ICONS ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-        <title>Responsive sidebar submenus</title>
-    </head>
-    <body>
-       <!--========== HEADER ==========-->
-       <header class="header">
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <title>Responsive sidebar submenus</title>
+</head>
+
+<body>
+    <!--========== HEADER ==========-->
+    <header class="header">
         <div class="header__container">
             <img src="/img/perfil.jpg" alt="" class="header__img">
 
@@ -36,7 +38,7 @@
         <nav class="nav__container">
             <div>
                 <a href="#" class="nav__link nav__logo">
-                    <i class='bx bxs-disc nav__icon' ></i>
+                    <i class='bx bxs-disc nav__icon'></i>
                     <span class="nav__logo-name">IFSP</span>
                 </a>
 
@@ -45,13 +47,13 @@
                         <h3 class="nav__subtitle">Perfil</h3>
 
                         <a href="#" class="nav__link active">
-                            <i class='bx bx-home nav__icon' ></i>
+                            <i class='bx bx-home nav__icon'></i>
                             <span class="nav__name">Inicio</span>
                         </a>
-                        
+
                         <div class="nav__dropdown">
                             <a href="#" class="nav__link">
-                                <i class='bx bx-user nav__icon' ></i>
+                                <i class='bx bx-user nav__icon'></i>
                                 <span class="nav__name">Perfil</span>
                                 <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                             </a>
@@ -66,7 +68,7 @@
                         </div>
 
                         <a href="#" class="nav__link">
-                            <i class='bx bx-message-rounded nav__icon' ></i>
+                            <i class='bx bx-message-rounded nav__icon'></i>
                             <span class="nav__name">Mensagens</span>
                         </a>
                     </div>
@@ -76,7 +78,7 @@
 
                         <div class="nav__dropdown">
                             <a href="#" class="nav__link">
-                                <i class='bx bx-bell nav__icon' ></i>
+                                <i class='bx bx-bell nav__icon'></i>
                                 <span class="nav__name">Notificação</span>
                                 <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                             </a>
@@ -93,17 +95,17 @@
                         </div>
 
                         <a href="#" class="nav__link">
-                            <i class='bx bx-compass nav__icon' ></i>
+                            <i class='bx bx-compass nav__icon'></i>
                             <span class="nav__name">Explore</span>
                         </a>
                         <a href="#" class="nav__link">
-                            <i class='bx bx-bookmark nav__icon' ></i>
+                            <i class='bx bx-bookmark nav__icon'></i>
                             <span class="nav__name">Saved</span>
                         </a>
 
                         <div class="nav__dropdown">
                             <a href="#" class="nav__link">
-                                <i class='bx bx-book-heart nav__icon' ></i>
+                                <i class='bx bx-book-heart nav__icon'></i>
                                 <span class="nav__name">Materias</span>
                                 <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                             </a>
@@ -121,7 +123,7 @@
 
                         <div class="nav__dropdown">
                             <a href="#" class="nav__link">
-                                <i class='bx bx-book-heart nav__icon' ></i>
+                                <i class='bx bx-book-heart nav__icon'></i>
                                 <span class="nav__name">Opções prof</span>
                                 <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                             </a>
@@ -141,32 +143,35 @@
             </div>
 
             <a href="#" class="nav__link nav__logout">
-                <i class='bx bx-log-out nav__icon' ></i>
+                <i class='bx bx-log-out nav__icon'></i>
                 <span class="nav__name">Log Out</span>
             </a>
         </nav>
     </div>
     <!--========== CONTENTS ==========-->
-        <main>
-            <!-- exibir-prova.ejs -->
+    <main>
+        <!-- exibir-prova.ejs -->
 
-            <h1><%= prova.nome %></h1>
+        <h1>
+            <%= prova.nome %>
+        </h1>
 
-            <form method="POST" action="/prova/<%= prova.id %>/responder">
+        <form method="POST" action="/prova/<%= prova.id %>/responder">
             <ul>
-                <% prova.Perguntas.forEach(pergunta => { %>
-                <li>
-                    <p><%= pergunta.pergunta %></p>
-                    <input type="text" name="resposta_<%= pergunta.id %>" />
-                </li>
-                <% }); %>
+                <% prova.Perguntas.forEach(pergunta=> { %>
+                    <li>
+                        <p>
+                            <%= pergunta.pergunta %>
+                        </p>
+                        <input type="text" name="resposta_<%= pergunta.id %>" />
+                    </li>
+                    <% }); %>
             </ul>
             <button type="submit">Enviar Respostas</button>
-            </form>
+        </form>
 
-        </main>
+    </main>
 
-        <!--========== MAIN JS ==========-->
-        <script src="/js/main.js"></script>
-    </body>
-</html>
+    <!--========== MAIN JS ==========-->
+    <script src="/js/main.js"></script>
+    <%- include('../partials/footer') %>
