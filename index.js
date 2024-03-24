@@ -1,11 +1,16 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const session = require('express-session');
-
+const OpenAI = require('openai');
 
 const {comentarios, usuarios, AreaProfessor, inicio} = require('./controllers');
 
 const app = express();
+
+// Configuração da API
+const openai = new OpenAI({
+    apiKey: ''   //Chave pra usar a API, ta no whatsapp
+  });
 
 const umDia = 1000*60*60*24;
 const sessionOptions = {
