@@ -9,6 +9,25 @@ const { PerguntasProvas } = require('../models');
 const { Resposta } = require('../models');
 const roteador = Router()
 
+//Rota da API chatgpt(Utilizar apenas quando necessario)
+roteador.get('/openIA', async (req, res) => {
+  try {
+    // Gerar conclusão usando o OpenAI
+    const completion = await openai.chat.completions.create({
+      messages: [{ role: "system", content: "Explique como funciona a estrutura de um jogo feito em pygame" }],
+      model: "gpt-3.5-turbo",
+    });
+
+    // Enviar resposta ao cliente
+    res.json(completion.choices[0]);
+  } catch (error) {
+    // Lidar com erros
+    console.error('Erro:', error);
+    res.status(500).send('Erro ao processar a solicitação');
+  }
+});
+
+
 // rota de perfil de usuario removi as outras paginas iguais e adicionei o tipo de perfil ao usuario
 roteador.get('/perfil', async (req, res) => {
   const id = req.session.idUsuario;
@@ -122,7 +141,7 @@ roteador.get('/registrar-questao/:tipo', async (req, res) => {
     return res.status(401).redirect('/usuario/login');
   }
   const Topicos = await Topico.findAll();
-  const tipo = req.params.tipo.toLowerCase(); 
+  const tipo = req.params.tipo.toLowerCase();
   res.status(200).render('usuario/registroPergunta', { Topicos, tipo });
 });
 
@@ -141,7 +160,7 @@ roteador.post('/registrar-questao/:tipo', async (req, res) => {
     const tipo = req.params.tipo;
     const usuarioId = req.session.idUsuario;
 
-    if(tipo === "objetiva"){
+    if (tipo === "objetiva") {
       const respostaConcatenada = respostas.join('_');
       await Questões.create({
         pergunta,
@@ -150,10 +169,10 @@ roteador.post('/registrar-questao/:tipo', async (req, res) => {
         usuarioId,
         resposta: respostaConcatenada
       });
-    }else if (tipo === "dissertativa"){
+    } else if (tipo === "dissertativa") {
 
-      var resposta = " "  
-  
+      var resposta = " "
+
       await Questões.create({
         pergunta,
         titulo,
@@ -161,10 +180,10 @@ roteador.post('/registrar-questao/:tipo', async (req, res) => {
         usuarioId,
         resposta: resposta
       });
-    }else{
+    } else {
       throw new Error(" Tipo de questao invalido")
     }
-  
+
 
     res.status(201).redirect('/usuario/inicioLogado');
   } catch (error) {
